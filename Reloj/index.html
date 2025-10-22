@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj WuTang</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+        
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #bdbdbd;
+            margin: 0;
+            background-image: url("./pared2.jpeg");
+            background-size:cover;
+         }
+
+         .txt div{
+            position: absolute;
+            top: 5%;
+            right: 41%;
+            font-size: 250%;
+            font-family: "Permanent Marker";
+            color: white;
+            
+
+         }
+         .LogoWu img{
+            display: flex;
+            position: absolute;
+            height: 150px;
+            width:150px;
+            top: 100px;
+            left: 100px;
+         }
+         .reloj{
+            width: 300px;
+            height: 300px;
+            border: 8px solid rgb(34, 34, 34);
+            border-radius: 50%;
+            position: relative;
+            padding: 20px;
+            background: yellow;
+            box-shadow: inset 0 0 12px rgb(0, 0, 0);
+        }
+        .interiorRlj{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform: translateY(-3px); 
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        .palo {
+            width: 50%;
+            background: rgb(59, 59, 59);
+            position: absolute;
+            top: 50%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+           
+        }
+
+        .hora-palo{ 
+            height: 6px; 
+        }
+        .minuto-palo{ 
+            height: 4px; 
+        }
+        .seg-palo{ 
+            height: 2px; 
+            background: red; 
+        }
+
+        .numero {
+            position: absolute;
+            font-size: 24px;
+            transform: translate(-50%, -50%);
+        }
+
+        .numero1{ 
+            top: 12%; 
+            left: 78%; 
+        }
+        .numero2{ 
+            top: 29%;
+             left: 95%; 
+        }
+        .numero3{ 
+            top: 50%; 
+            left: 100%; 
+        }
+        .numero4{ 
+            top: 73%; 
+            left: 93%; 
+        }
+        .numero5{ 
+            top: 93%; 
+            left: 77%; 
+        }
+        .numero6{ 
+            top: 100%; 
+            left: 50%; 
+        }
+        .numero7{ 
+            top: 93%; 
+            left: 24%; 
+        }
+        .numero8{ 
+            top: 74%; 
+            left: 7%; 
+        }
+        .numero9{ 
+            top: 50%; 
+            left: 0%; 
+        }
+        .numero10{ 
+            top: 29%; 
+            left: 5.8%; 
+        }
+        .numero11{ 
+            top: 11.8%; 
+            left: 21%; 
+        }
+        .numero12{ 
+            top: 2%; 
+            left: 50%; 
+        }
+    </style>
+</head>
+<body>
+    <div class="txt">
+        <div>Hora Actual:</div>
+    </div>
+    <div class="reloj">
+        <div class="LogoWu">
+            <img src="./WuTang.png" alt="">
+        </div>
+        <div class="interiorRlj">
+            <div class="numero numero1">1</div>
+            <div class="numero numero2">2</div>
+            <div class="numero numero3">3</div>
+            <div class="numero numero4">4</div>
+            <div class="numero numero5">5</div>
+            <div class="numero numero6">6</div>
+            <div class="numero numero7">7</div>
+            <div class="numero numero8">8</div>
+            <div class="numero numero9">9</div>
+            <div class="numero numero10">10</div>
+            <div class="numero numero11">11</div>
+            <div class="numero numero12">12</div>
+            <div class="palo hora-palo" id="hora-palo"></div>
+            <div class="palo minuto-palo" id="minuto-palo"></div>
+            <div class="palo seg-palo" id="seg-palo"></div>
+        </div>
+    </div>
+ <script>
+        function setClock() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+            const secondDeg = ((seconds / 60) * 360) + 90;
+            const minuteDeg = ((minutes / 60) * 360) + 90;
+            const hourDeg = ((hours / 12) * 360) + 90;
+
+            document.getElementById("seg-palo").style.transform = `rotate(${secondDeg}deg)`;
+            document.getElementById("minuto-palo").style.transform = `rotate(${minuteDeg}deg)`;
+            document.getElementById("hora-palo").style.transform = `rotate(${hourDeg}deg)`;
+        }
+
+        setInterval(setClock, 1000);
+        setClock();
+        
+    </script>
+</body>
+</html>
